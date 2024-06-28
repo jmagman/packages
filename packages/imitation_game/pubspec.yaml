@@ -6,7 +6,10 @@ dependencies:
   mustache_template:
   args:
   http:
-#  poll_ios_stats:
+  poll_ios_stats:
+    git:
+      url: git@github.com:jmagman/poll_ios_stats.git
+      ref: null-safe
   flutter:
     sdk: flutter
 environment:
