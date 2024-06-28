@@ -38,7 +38,7 @@ Future<void> _sendResult(double result) async {
 void main() {
   runApp(const MyApp());
   // Hide status bar.
-  SystemChrome.setEnabledSystemUIOverlays(<SystemUiOverlay>[]);
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
   _getHostIp().then((String ip) async {
     _hostIp = ip;
   });
@@ -67,7 +67,7 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
             final PollIosStats poller = PollIosStats();
             final StartupTime startupTime = await poller.pollStartupTime();
             final Duration diff = renderTime.difference(
-                DateTime.fromMicrosecondsSinceEpoch(startupTime.startupTime));
+                DateTime.fromMicrosecondsSinceEpoch(startupTime.startupTime!));
             _sendResult(diff.inMicroseconds / 1000000.0);
           });
         });
