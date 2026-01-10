@@ -199,8 +199,8 @@ struct QuickActionsPluginTests {
       flutterApi: flutterApi,
       shortcutItemProvider: mockShortcutItemProvider)
 
+    var invokeMethodCount = 0
     await confirmation("invokeMethod must be called") { confirmed in
-      var invokeMethodCount = 0
       flutterApi.launchActionCallback = { aString in
         #expect(aString == item.type)
         invokeMethodCount += 1
@@ -217,8 +217,8 @@ struct QuickActionsPluginTests {
         !launchResult, "didFinishLaunchingWithOptions must return false if launched from shortcut.")
 
       plugin.applicationDidBecomeActive(UIApplication.shared)
-
-      #expect(invokeMethodCount == 1)
     }
+
+    #expect(invokeMethodCount == 1)
   }
 }
