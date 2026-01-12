@@ -124,7 +124,7 @@ struct QuickActionsPluginTests {
       !launchResult, "didFinishLaunchingWithOptions must return false if launched from shortcut.")
   }
 
-  @Test func applicationDidFinishLaunchingWithOptions_launchWithoutShortcut() {
+  @Test func applicationDidFinishLaunchingWithOptionsLaunchWithoutShortcut() {
     let flutterApi: MockFlutterApi = MockFlutterApi()
     let mockShortcutItemProvider = MockShortcutItemProvider()
 
@@ -184,7 +184,7 @@ struct QuickActionsPluginTests {
     }
   }
 
-  @Test func applicationDidBecomeActiveLaunchWithShortcut_becomeActiveTwice() async {
+  @Test func applicationDidBecomeActiveLaunchWithShortcutBecomeActiveTwice() async {
     let item = UIApplicationShortcutItem(
       type: "SearchTheThing",
       localizedTitle: "Search the thing",
