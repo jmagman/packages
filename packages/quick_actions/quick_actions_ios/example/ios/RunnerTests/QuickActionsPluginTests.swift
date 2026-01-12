@@ -22,7 +22,7 @@ class MockFlutterApi: IOSQuickActionsFlutterApiProtocol {
 @MainActor
 struct QuickActionsPluginTests {
 
-  @Test func handleMethodCall_setShortcutItems() {
+  @Test func handleMethodCallSetShortcutItems() {
     let rawItem = ShortcutItemMessage(
       type: "SearchTheThing",
       localizedTitle: "Search the thing",
@@ -47,7 +47,7 @@ struct QuickActionsPluginTests {
     #expect(mockShortcutItemProvider.shortcutItems == [item])
   }
 
-  @Test func handleMethodCall_clearShortcutItems() {
+  @Test func handleMethodCallClearShortcutItems() {
     let item = UIApplicationShortcutItem(
       type: "SearchTheThing",
       localizedTitle: "Search the thing",
@@ -102,7 +102,7 @@ struct QuickActionsPluginTests {
     }
   }
 
-  @Test func applicationDidFinishLaunchingWithOptions_launchWithShortcut() {
+  @Test func applicationDidFinishLaunchingWithOptionsLaunchWithShortcut() {
     let flutterApi: MockFlutterApi = MockFlutterApi()
     let mockShortcutItemProvider = MockShortcutItemProvider()
 
@@ -137,7 +137,7 @@ struct QuickActionsPluginTests {
       launchResult, "didFinishLaunchingWithOptions must return true if not launched from shortcut.")
   }
 
-  @Test func applicationDidBecomeActive_launchWithoutShortcut() {
+  @Test func applicationDidBecomeActiveLaunchWithoutShortcut() {
     let flutterApi: MockFlutterApi = MockFlutterApi()
     let mockShortcutItemProvider = MockShortcutItemProvider()
 
@@ -152,7 +152,7 @@ struct QuickActionsPluginTests {
     plugin.applicationDidBecomeActive(UIApplication.shared)
   }
 
-  @Test func applicationDidBecomeActive_launchWithShortcut() async {
+  @Test func applicationDidBecomeActiveLaunchWithShortcut() async {
     let item = UIApplicationShortcutItem(
       type: "SearchTheThing",
       localizedTitle: "Search the thing",
@@ -184,7 +184,7 @@ struct QuickActionsPluginTests {
     }
   }
 
-  @Test func applicationDidBecomeActive_launchWithShortcut_becomeActiveTwice() async {
+  @Test func applicationDidBecomeActiveLaunchWithShortcut_becomeActiveTwice() async {
     let item = UIApplicationShortcutItem(
       type: "SearchTheThing",
       localizedTitle: "Search the thing",
